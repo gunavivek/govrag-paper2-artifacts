@@ -1,0 +1,95 @@
+# Run manifest — pre-registered full benchmark, RUN 1
+# Format: Model_and_Reproducibility_Protocol.md §4. Assembled 2026-07-11 from run artifacts,
+# git, AI Studio usage/spend, and environment capture. Gaps stated explicitly at bottom.
+
+run_id: delucionqa_full_run1_20260709
+git_commit: 51a7bdd            # tag: run1-complete, branch paper2-spectrum, [repository URL redacted]
+git_note: committed 2026-07-11 immediately post-run; file contents identical to run-time state
+          (run executed from the working tree later captured by this commit)
+
+corpus:
+  name: RAGBench/DelucionQA (deduplicated benchmark input)
+  records: 912                 # 848 answerable / 64 unanswerable
+  file: data/delucionqa_records_912.csv
+  md5: 59527382dc15a0aa7361a9a8b45ea6c3
+  gold_map: results/gold_map.json (md5 2f058303207fc267717c68de5efd912a)
+  provenance: Paper2/2_Design/Benchmark_Input_Provenance.md
+
+phase: serve + eval            # build phase was 2026-07-03..05 (separate; $498.12; embeddings 37K reqs Jul 5)
+
+pipeline_models:               # single fixed pipeline, unchanged across all records/configs
+  generation_q6_and_naive:
+    provider: google
+    model: gemini-3.5-flash    # alias as exposed by AI Studio; versioned suffix not shown in UI
+    api_dates: 2026-07-09
+  extraction_q2:
+    provider: google
+    model: gemini-2.5-flash-lite
+    api_dates: 2026-07-09
+  sdk: google-genai==1.56.0 (httpx 0.28.1)
+
+judge:                         # independent of generation models (protocol §2)
+  provider: google
+  model: gemini-2.5-pro
+  api_dates: 2026-07-09..10
+  scorer: E3_Unified_Evaluation.py (sequential)
+  prompt_hashes:
+    correctness_md5: ab4e7d86f6960353468f254efdec9585   # trace_scorer.CORRECT_PROMPT
+    trace_md5: 514c8783e89dc9f12060377decf7ea18          # trace_scorer.JUDGE_PROMPT
+
+decoding:
+  temperature: 0.0             # Q6 (frozen code line 111), naive baseline, both judge calls
+  top_p: provider default (not set)
+  max_tokens: provider default (not set)
+  seed: not supported/not set
+
+prompts: frozen in code at git tag run1-complete; no prompt edits between pilot validation and run
+
+configs: 9 (G0_Naive, G1_Cited, G2_Grounded, G3_Strict, G4_Corrob, G2+OntNU, G2+OntConf,
+         G2+Aff, G2+OntNU+Aff); SWEEP_TAU=0.35 (default; env var unset)
+
+execution:
+  driver: B4_Batch_Runner.py --records data/delucionqa_records_912.csv --k 25 --run-e3
+  batches: 37 x K=25 (last 12), all completed, zero failed stages (results/full_run/timing_log.csv)
+  generation_window: 2026-07-09 ~08:00 -> 18:39 CT (~8.6 h; 19.1 +/- 1.9 min/batch)
+  eval_window: 2026-07-09 ~19:10 CT -> 2026-07-10 21:19 CT (sequential E3; pace 40 s/record
+               daytime, ~150 s/record overnight under provider-side latency variance)
+  api_reliability: ~19K requests, 100% success rate, 1x 503 total (AI Studio overview)
+
+repeats: run 1 of N>=3 (replication design under advisor review; see Analysis_Plan deviation policy)
+
+cost:                          # AI Studio Spend, daily (PDT attribution), exact
+  generation_day_usd: 121.39   # Jul 9
+  scoring_day_usd: 100.57      # Jul 10
+  run_total_usd: 221.96
+  per_question_usd: 0.243      # full 9-config frontier / 912 questions
+  context: build phase (Jul 3-5) $498.12; pilot/diagnostics (Jul 6-7) $23.07; Jul 8 shows $0.00
+           despite the 20-rec pilot (likely attribution lag; immaterial)
+  monthly_cap_note: $743.14 / $999.00 cap as of Jul 11 -> two further full runs (~$444) exceed
+           the July cap; raise cap or schedule run 3 after Aug 1 (PST reset)
+
+latency:
+  per_question_serve_amortized_s: ~34      # 8.6 h / 912 (all 9 configs' generation included)
+  naive_per_question: exact per-record latency_s + token usage in results/serve_results.jsonl
+  detail: results/full_run/timing_log.csv (per stage, per config, per batch)
+
+peak_ram_mb: NOT INSTRUMENTED for serve/eval (gap; build-phase stats in runs/B1_*/ manifest)
+
+environment:
+  host: Windows 11 Home 10.0.26200, Intel64 Family 6 Model 140 (Tiger Lake), 16,150 MB RAM
+  python: 3.11.9 (venv)
+  key_libs: {networkx: 3.6.1, numpy: 2.4.0, pandas: 2.3.3, matplotlib: 3.10.8}
+  full_freeze: run1_pip_freeze.txt (UTF-16LE encoding, PowerShell redirect)
+
+outputs:
+  per_pair_log: E3_run1_master_eval_log.csv (8,208 rows; QA: 0 ERROR verdicts)
+  summary: E3_run1_frontier_summary.csv
+  analysis: Paper2/6_Results/Full_Benchmark_Run1_Results.md (H1-H4 verdicts)
+
+known_gaps:
+  - exact model version strings: AI Studio exposes aliases only (as confirmed available);
+    record alias + api_date per protocol fallback
+  - serve/eval peak RAM not captured (instrument before run 2 if desired -- code change,
+    requires approval)
+  - gov_ratio not propagated by Q6 caches (risk-coverage proxy falls back to per-record
+    kept-triplet counts from _spec_*_red.jsonl, as pre-registered)

@@ -1,0 +1,354 @@
+{
+  "corpus": "hagrid_run2",
+  "n_records": 1,
+  "started_at": "2026-07-19T21:49:50.518238Z",
+  "skip_build": true,
+  "build": {
+    "status": "SKIPPED",
+    "note": "measured existing output/"
+  },
+  "graph": {
+    "exists": true,
+    "graphml_bytes": 72127127,
+    "nodes": 851,
+    "edges": 5815,
+    "distinct_record_ids_on_edges": 1
+  },
+  "index_dir": "<REPO_ROOT>\\index\\hagrid_run2",
+  "index_files": [
+    {
+      "file": "All_GovRAG_Evidence.jsonl",
+      "bytes": 1003749
+    },
+    {
+      "file": "Archive\\D2_Document_Domain_V1.jsonl",
+      "bytes": 2050
+    },
+    {
+      "file": "Archive\\D3_Domain_Recommendations.json",
+      "bytes": 15424
+    },
+    {
+      "file": "Archive\\D4_Registry_Pioneer.json",
+      "bytes": 2513
+    },
+    {
+      "file": "Archive\\M1_Layered_Chunks.csv",
+      "bytes": 84426
+    },
+    {
+      "file": "Archive\\M1_Text_Chunks.csv",
+      "bytes": 1064
+    },
+    {
+      "file": "Archive\\M2_discovered_concepts.json",
+      "bytes": 1264
+    },
+    {
+      "file": "Archive\\M3.3_Gov_Augmented_Graph.gml",
+      "bytes": 34661
+    },
+    {
+      "file": "Archive\\M3_3_Augmented_Graph.gml",
+      "bytes": 8305
+    },
+    {
+      "file": "Archive\\M3_Gov_Graph_Edges.csv",
+      "bytes": 5991
+    },
+    {
+      "file": "Archive\\M3_Gov_Knowledge_Graph.gml",
+      "bytes": 90862
+    },
+    {
+      "file": "Archive\\M3_Graph_Edges.csv",
+      "bytes": 20172
+    },
+    {
+      "file": "Archive\\M3_Knowledge_Graph.gml",
+      "bytes": 4447
+    },
+    {
+      "file": "Archive\\M4_Gov_Hybrid_Graph.gml",
+      "bytes": 848972
+    },
+    {
+      "file": "Archive\\M4_Hybrid_Graph.gml",
+      "bytes": 835995
+    },
+    {
+      "file": "Archive\\M5_5_APCS_Matrix.csv",
+      "bytes": 124
+    },
+    {
+      "file": "Archive\\M5_5_APCS_Report.json",
+      "bytes": 544
+    },
+    {
+      "file": "Archive\\M5_5_Full_Trace_Matrix.csv",
+      "bytes": 6524
+    },
+    {
+      "file": "Archive\\M5_5_UMAP_Coordinates.csv",
+      "bytes": 50394
+    },
+    {
+      "file": "Archive\\M5_5_UMAP_Validation.png",
+      "bytes": 147558
+    },
+    {
+      "file": "Archive\\M5_Embedded_Graph.gml",
+      "bytes": 141732285
+    },
+    {
+      "file": "Archive\\M5_Gov_Embedded_Graph.gml",
+      "bytes": 110626553
+    },
+    {
+      "file": "Archive\\M6_Clustered_Graph.gml",
+      "bytes": 141732967
+    },
+    {
+      "file": "Archive\\M6_Gov_Clustered_Graph.gml",
+      "bytes": 110635055
+    },
+    {
+      "file": "Archive\\M7_1_intents.jsonl",
+      "bytes": 12628
+    },
+    {
+      "file": "Archive\\M7_2_signatures.jsonl",
+      "bytes": 8834
+    },
+    {
+      "file": "Archive\\M9_E2E_Audit_Report.txt",
+      "bytes": 514
+    },
+    {
+      "file": "Archive\\M9_Provenance_Audit_Report.txt",
+      "bytes": 845
+    },
+    {
+      "file": "Archive\\Q1_domain_router.jsonl",
+      "bytes": 68775
+    },
+    {
+      "file": "Archive\\Q2_intents.jsonl",
+      "bytes": 71052
+    },
+    {
+      "file": "Archive\\Q3_signatures.jsonl",
+      "bytes": 73410
+    },
+    {
+      "file": "Archive\\Q45_retrieval_results.jsonl",
+      "bytes": 75238
+    },
+    {
+      "file": "Archive\\Q4_cluster_routing.jsonl",
+      "bytes": 5257
+    },
+    {
+      "file": "Archive\\Q5_retrieval_plan.jsonl",
+      "bytes": 9200
+    },
+    {
+      "file": "Archive\\Q6_answers.jsonl",
+      "bytes": 0
+    },
+    {
+      "file": "Baseline_Gemma_Stress_Test_Results (version 1).xlsb.csv",
+      "bytes": 115943
+    },
+    {
+      "file": "Baseline_Gemma_Stress_Test_Results.csv",
+      "bytes": 115664
+    },
+    {
+      "file": "Baseline_RAG_Results.csv",
+      "bytes": 29391
+    },
+    {
+      "file": "Baseline_Stress_Test_Results.csv",
+      "bytes": 115115
+    },
+    {
+      "file": "D1_global_domain_mapping.json",
+      "bytes": 2794
+    },
+    {
+      "file": "D1_Global_Mapping.json",
+      "bytes": 543
+    },
+    {
+      "file": "D1_OUTPUT_FILE_10_RECORDS.jsonl",
+      "bytes": 786945
+    },
+    {
+      "file": "D2_D3_Record_Domain_Mapping.jsonl",
+      "bytes": 282
+    },
+    {
+      "file": "D2_Document_Domain.jsonl",
+      "bytes": 225
+    },
+    {
+      "file": "D2_Ontological_ZScore_Viz.png",
+      "bytes": 206996
+    },
+    {
+      "file": "D3_Domain_Discovery.json",
+      "bytes": 1756
+    },
+    {
+      "file": "D45_Dispatcher_Report.json",
+      "bytes": 2
+    },
+    {
+      "file": "D4_Registry_Discovered.json",
+      "bytes": 3793
+    },
+    {
+      "file": "D5_Extraction_Manifest.jsonl",
+      "bytes": 115146
+    },
+    {
+      "file": "D5_Manifest_Override_Audit.jsonl",
+      "bytes": 336
+    },
+    {
+      "file": "M1_5_Audit_Report.jsonl",
+      "bytes": 1219
+    },
+    {
+      "file": "M1_Governed_Chunks.csv",
+      "bytes": 527648
+    },
+    {
+      "file": "M2_Discovery_Registry.json",
+      "bytes": 2
+    },
+    {
+      "file": "M2_Extracted_Triples.json",
+      "bytes": 356725
+    },
+    {
+      "file": "M2_telemetry.json",
+      "bytes": 297
+    },
+    {
+      "file": "M3_3_Augmented_Graph.graphml",
+      "bytes": 556124
+    },
+    {
+      "file": "M3_Graph_Stats.csv",
+      "bytes": 6803
+    },
+    {
+      "file": "M3_Knowledge_Graph.graphml",
+      "bytes": 500657
+    },
+    {
+      "file": "M4_alignment_results.jsonl",
+      "bytes": 6450
+    },
+    {
+      "file": "M4_Hybrid_Graph.graphml",
+      "bytes": 7797891
+    },
+    {
+      "file": "M5.5_Record_5abe65e2.html",
+      "bytes": 19792
+    },
+    {
+      "file": "M5_Embedded_Graph.graphml",
+      "bytes": 72127127
+    },
+    {
+      "file": "M8.3_Provenance_Report.csv",
+      "bytes": 559
+    },
+    {
+      "file": "M9_Audit_Report.txt",
+      "bytes": 759
+    },
+    {
+      "file": "MASTER_EVALUATION_LOG.csv",
+      "bytes": 3131
+    },
+    {
+      "file": "NAIVE_RAG_BASELINE_RESULTS.csv",
+      "bytes": 281
+    },
+    {
+      "file": "Q1_Audit_Report.md",
+      "bytes": 337
+    },
+    {
+      "file": "Q1_intent_gate.jsonl",
+      "bytes": 12609
+    },
+    {
+      "file": "Q2_5_bridge_entities.jsonl",
+      "bytes": 312
+    },
+    {
+      "file": "Q2_signatures.jsonl",
+      "bytes": 16473
+    },
+    {
+      "file": "Q3_5_bridge_entities.jsonl",
+      "bytes": 4491
+    },
+    {
+      "file": "Q3_retrieved_evidence.jsonl",
+      "bytes": 170773
+    },
+    {
+      "file": "Q4_final_answers.jsonl",
+      "bytes": 0
+    },
+    {
+      "file": "Q5_routed_context.jsonl",
+      "bytes": 99107
+    },
+    {
+      "file": "Q6_final_answers.jsonl",
+      "bytes": 37569
+    },
+    {
+      "file": "R_Embedded_Reference_Ontology.graphml",
+      "bytes": 7036166
+    },
+    {
+      "file": "R_Reference_Ontology.gml",
+      "bytes": 819684
+    },
+    {
+      "file": "R_Reference_Ontology_Governance.gml",
+      "bytes": 818648
+    },
+    {
+      "file": "R_Reference_Ontology_Governance_Viz.png",
+      "bytes": 382876
+    },
+    {
+      "file": "R_Statistical_Baseline.json",
+      "bytes": 246869
+    },
+    {
+      "file": "serve_chunk_filter.json",
+      "bytes": 17101
+    },
+    {
+      "file": "serve_question_chunk_map.jsonl",
+      "bytes": 2601630
+    },
+    {
+      "file": "serve_scoped_vocab.json",
+      "bytes": 8476
+    }
+  ],
+  "index_total_bytes": 603891169,
+  "ended_at": "2026-07-19T21:49:53.543831Z"
+}
